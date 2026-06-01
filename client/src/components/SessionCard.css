@@ -1,0 +1,53 @@
+/* SessionCard component styles */
+.session-card {
+  background: var(--card-bg, #fff);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.session-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.session-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.icon {
+  color: var(--icon-color, #4a4a4a);
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--progress-bg, #e0e0e0);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+.progress-percent {
+  font-size: 0.75rem;
+  color: var(--text-muted, #6b7280);
+  margin-top: 0.25rem;
+  text-align: right;
+}
+
+.completed-icon {
+  align-self: flex-end;
+  color: var(--success, #10b981);
+}
