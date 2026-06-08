@@ -1,5 +1,7 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { GraduationCap, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import './Footer.css';
 
@@ -8,7 +10,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-brand">
-          <Link to="/" className="logo">
+          <Link href="/" className="logo">
             <div className="logo-icon-box">
               <GraduationCap className="logo-icon-img" />
             </div>
@@ -29,20 +31,20 @@ const Footer = () => {
         <div className="footer-links">
           <h4>Platform</h4>
           <ul>
-            <li><Link to="/courses">Explore Courses</Link></li>
-            <li><Link to="/live-classes">Live Sessions</Link></li>
-            <li><Link to="/membership">Membership Plans</Link></li>
-            <li><Link to="/teachers">Expert Mentors</Link></li>
+            <li><Link href="/courses">Explore Courses</Link></li>
+            <li><Link href="/live-classes">Live Sessions</Link></li>
+            <li><Link href="/membership">Membership Plans</Link></li>
+            <li><Link href="/teachers">Expert Mentors</Link></li>
           </ul>
         </div>
 
         <div className="footer-links">
           <h4>Support</h4>
           <ul>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Help Center</Link></li>
-            <li><Link to="/privacy">Privacy Policy</Link></li>
-            <li><Link to="/terms">Terms & Service</Link></li>
+            <li><Link href="/about">About Us</Link></li>
+            <li><Link href="/contact">Help Center</Link></li>
+            <li><Link href="/privacy">Privacy Policy</Link></li>
+            <li><Link href="/terms">Terms & Service</Link></li>
           </ul>
         </div>
 

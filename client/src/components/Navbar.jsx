@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Menu, X, GraduationCap, ChevronRight, LayoutDashboard, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
@@ -8,11 +11,11 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isLoggedIn, logout } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleLogout = () => {
     logout();
-    navigate('/');
+    router.push('/');
   };
 
   useEffect(() => {
@@ -26,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
-        <Link to="/" className="logo">
+        <Link href="/" className="logo">
         <div className="logo-icon-box">
           <GraduationCap className="logo-icon-img" />
         </div>
@@ -37,20 +40,20 @@ const Navbar = () => {
         <a href="#courses" className="nav-link">Courses</a>
         <a href="#live-sessions" className="nav-link">Live Classes</a>
         <a href="#features" className="nav-link">About</a>
-        <Link to="/" className="nav-link">Home</Link>
+        <Link href="/" className="nav-link">Home</Link>
       </div>
 
         <div className="nav-actions desktop-only">
           {!isLoggedIn ? (
             <>
-              <Link to="/login" className="btn-text">Login</Link>
-              <Link to="/signup" className="btn btn-primary">
+              <Link href="/login" className="btn-text">Login</Link>
+              <Link href="/signup" className="btn btn-primary">
                 Get Started <ChevronRight size={18} />
               </Link>
             </>
           ) : (
             <>
-              <Link to="/dashboard" className="btn-text" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Link href="/dashboard" className="btn-text" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <LayoutDashboard size={18} /> Dashboard
               </Link>
               <button onClick={handleLogout} className="btn btn-outline btn-sm">
@@ -71,19 +74,19 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-links">
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
           <a href="#courses" onClick={() => setIsMobileMenuOpen(false)}>Courses</a>
           <a href="#live-sessions" onClick={() => setIsMobileMenuOpen(false)}>Live Classes</a>
           <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
           <div className="mobile-actions">
             {!isLoggedIn ? (
               <>
-                <Link to="/login" className="btn btn-outline" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
-                <Link to="/signup" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>Signup</Link>
+                <Link href="/login" className="btn btn-outline" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
+                <Link href="/signup" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>Signup</Link>
               </>
             ) : (
               <>
-                <Link to="/dashboard" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>Dashboard</Link>
+                <Link href="/dashboard" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>Dashboard</Link>
                 <button onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }} className="btn btn-outline">Logout</button>
               </>
             )}

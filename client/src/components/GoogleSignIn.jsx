@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '../context/AuthContext';
 
 const GOOGLE_CLIENT_ID_ENDPOINT = 'http://localhost:3000/api/v1/public/google-client-id';
@@ -9,7 +11,7 @@ const GoogleSignIn = ({ redirectTo = '/dashboard', className = '' }) => {
   const containerRef = useRef(null);
   const [clientId, setClientId] = useState('');
   const { setUser, setToken, setIsLoggedIn } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Helper to load Google's identity script
   const loadGoogleScript = () => {
@@ -63,7 +65,7 @@ const GoogleSignIn = ({ redirectTo = '/dashboard', className = '' }) => {
                   try { if (typeof setToken === 'function') setToken(result.data.token); } catch (e) {}
                   try { if (typeof setUser === 'function') setUser(result.data.user); } catch (e) {}
                   try { if (typeof setIsLoggedIn === 'function') setIsLoggedIn(true); } catch (e) {}
-                  navigate(redirectTo);
+                  router.push(redirectTo);
                 } else {
                   console.error('Google auth failed:', result.message);
                 }
